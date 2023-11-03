@@ -1,0 +1,719 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ice Bear">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="实验报告 课程名称：       图像信息处理       指导老师：   宋明黎    成绩：                    实验名称：           bmp图像二值化及相关处理 姓名： 曹正 学号： 3220102918 日期：2023&#x2F;11&#x2F;02 一、实验目的和要求    1.利用otsu算法求threshold实现bmp图像的二值化     2.实现bin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像信息处理HW2Report">
+<meta property="og:url" content="http://example.com/2023/11/02/%E5%9B%BE%E5%83%8F%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86HW2Report/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="实验报告 课程名称：       图像信息处理       指导老师：   宋明黎    成绩：                    实验名称：           bmp图像二值化及相关处理 姓名： 曹正 学号： 3220102918 日期：2023&#x2F;11&#x2F;02 一、实验目的和要求    1.利用otsu算法求threshold实现bmp图像的二值化     2.实现bin">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/6ba1ea31e3ed24ec3c8f862b1397524.png">
+<meta property="og:image" content="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/4f370b067bf6c372aba3f468ca9bdb4.png">
+<meta property="og:image" content="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/848daf187445808be2a00859366356a.png">
+<meta property="og:image" content="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/9e92991266504c17d06b7597960ddb6.png">
+<meta property="og:image" content="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/4c7c067e7961590ab6423b4a7c4ef09.png">
+<meta property="og:image" content="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/73d076d8f96a7e50f2140ae22c60085.png">
+<meta property="article:published_time" content="2023-11-02T14:50:22.000Z">
+<meta property="article:modified_time" content="2023-11-02T15:55:36.635Z">
+<meta property="article:author" content="Ice Bear">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/6ba1ea31e3ed24ec3c8f862b1397524.png">
+  
+  
+  
+  <title>图像信息处理HW2Report - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="图像信息处理HW2Report"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-02 22:50" pubdate>
+          2023年11月2日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">图像信息处理HW2Report</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="data:image/png;base64,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" srcset="/img/loading.gif" lazyload>实验报告</p>
+<p>课程名称：       图像信息处理       指导老师：   宋明黎    成绩：                   </p>
+<p>实验名称：           bmp图像二值化及相关处理</p>
+<p>姓名： 曹正</p>
+<p>学号： 3220102918</p>
+<p>日期：2023&#x2F;11&#x2F;02</p>
+<h3 id="一、实验目的和要求"><a href="#一、实验目的和要求" class="headerlink" title="一、实验目的和要求"></a>一、实验目的和要求</h3><p>    1.利用otsu算法求threshold实现bmp图像的二值化</p>
+<p>    2.实现binary image erosion</p>
+<p>    3.实现binary image dilation</p>
+<p>    4.实现binary image opening</p>
+<p>    5.实现binary image closing </p>
+<h3 id="二、实验内容和原理"><a href="#二、实验内容和原理" class="headerlink" title="二、实验内容和原理"></a>二、实验内容和原理</h3><ol>
+<li><p><strong>图像二值化 (Image binarization)</strong>: 这是将图像转化为仅包含两个可能的值（例如，0和1或黑和白）的过程。这通常是通过选择一个阈值并将所有低于此值的像素设置为0（或黑色），而所有高于此值的像素设置为1（或白色）来实现的。</p>
+<p>其中阈值threshold需要通过otsu算法求解：</p>
+</li>
+<li><p><strong>二值图像侵蚀 (Binary image erosion)</strong>: 这是一种减少图像中白色区域大小的过程。它通过将每个白色像素与其邻域进行比较并决定是否将其变为黑色来工作。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-comment">// 声明腐蚀函数，对二值化图像进行腐蚀操作</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">erosion</span><span class="hljs-params">(<span class="hljs-type">int</span> width, <span class="hljs-type">int</span> height)</span> </span>&#123;<br>    <span class="hljs-comment">// 初始化腐蚀结果图像，使其与原始二值图像相同</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; height; i++) <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; width ; j++)&#123;<br>            Erode[i][j] = Binarize[i][j];<br>        &#125;<br><br>    <span class="hljs-comment">// 定义8个方向的移动向量，用于检查当前像素点周围的像素</span><br>    <span class="hljs-type">int</span> dx[] = &#123;<span class="hljs-number">-1</span>,  <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;;<br>    <span class="hljs-type">int</span> dy[] = &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>&#125;;<br><br>    <span class="hljs-comment">// 对图像进行遍历，除去边界像素</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> y = <span class="hljs-number">1</span>; y &lt; height - <span class="hljs-number">1</span>; y++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> x = <span class="hljs-number">1</span>; x &lt; width - <span class="hljs-number">1</span>; x++) &#123;<br>            <span class="hljs-comment">// 用于标记当前像素点是否被腐蚀</span><br>            <span class="hljs-type">int</span> isEroded = <span class="hljs-number">0</span>;<br><br>            <span class="hljs-comment">// 检查当前像素点的8个邻居</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> d = <span class="hljs-number">0</span>; d &lt; <span class="hljs-number">8</span>; d++) &#123;<br>                <span class="hljs-comment">// 计算邻居的坐标</span><br>                <span class="hljs-type">int</span> nx = x + dx[d];<br>                <span class="hljs-type">int</span> ny = y + dy[d];<br>                <span class="hljs-comment">// 计算邻居的灰度值（因为是二值图像，所以RGB值相同）</span><br>                <span class="hljs-type">int</span> gray = (Binarize[ny][nx].Red + Binarize[ny][nx].Green + Binarize[ny][nx].Blue) / <span class="hljs-number">3</span>;<br><br>                <span class="hljs-comment">// 如果邻居是黑色像素，则当前像素点需要被腐蚀</span><br>                <span class="hljs-keyword">if</span> (gray == <span class="hljs-number">0</span>) &#123;<br>                    isEroded = <span class="hljs-number">1</span>;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br><br>            <span class="hljs-comment">// 如果确定当前像素点被腐蚀，则将其设置为黑色</span><br>            <span class="hljs-keyword">if</span> (isEroded) &#123;<br>                Erode[y][x].Red = Erode[y][x].Green = Erode[y][x].Blue = <span class="hljs-number">0</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 试图打开文件以写入腐蚀后的图像数据</span><br>    FILE* fr;<br>    <span class="hljs-keyword">if</span>( ( fr = <span class="hljs-built_in">fopen</span>(<span class="hljs-string">&quot;testero.bmp&quot;</span>,<span class="hljs-string">&quot;wb&quot;</span>) ) == <span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;erode Opening Error!&quot;</span>); <span class="hljs-comment">// 如果文件打开失败，则打印错误信息并退出</span><br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// 将位图文件头写入文件</span><br>    <span class="hljs-built_in">fwrite</span>(&amp;filehead,<span class="hljs-number">1</span>,<span class="hljs-built_in">sizeof</span>(BMPFILEHEADER),fr);<br>    <span class="hljs-comment">// 将位图信息头写入文件</span><br>    <span class="hljs-built_in">fwrite</span>(&amp;infohead,<span class="hljs-number">1</span>,<span class="hljs-built_in">sizeof</span>(BMPINFOHEADER),fr);<br>    <span class="hljs-comment">// 移动文件指针到像素数据的起始位置</span><br>    <span class="hljs-built_in">fseek</span>(fr, filehead.bfOffset, SEEK_SET);<br><br>    <span class="hljs-comment">// 将腐蚀后的图像数据写入文件</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; height;i++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;j &lt; width;j++)&#123;<br>            <span class="hljs-built_in">fwrite</span>(&amp;Erode[i][j].Blue,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,fr);<br>            <span class="hljs-built_in">fwrite</span>(&amp;Erode[i][j].Green,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,fr);<br>            <span class="hljs-built_in">fwrite</span>(&amp;Erode[i][j].Red,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,fr);<br>        &#125;<br><br>    <span class="hljs-comment">// 关闭文件</span><br>    <span class="hljs-built_in">fclose</span>(fr);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>二值图像扩张 (Binary image dilation)</strong>: 与侵蚀相反，扩张是增加图像中白色区域的过程。它通过检查每个黑色像素的邻域并决定是否将其变为白色来工作。</p>
+<p>几乎同上，区别：</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs inform7">for (int y = 1; y &lt; height - 1; y++) &#123;<br>        for (int x = 1; x &lt; width - 1; x++) &#123;<br>            int isEroded = 0;<br><br>            for (int d = 0; d &lt; 8; d++) &#123;<br>                int nx = x + dx<span class="hljs-comment">[d]</span>;<br>                int ny = y + dy<span class="hljs-comment">[d]</span>;<br>                int gray = (Binarize<span class="hljs-comment">[ny]</span><span class="hljs-comment">[nx]</span>.Red + Binarize<span class="hljs-comment">[ny]</span><span class="hljs-comment">[nx]</span>.Green + Binarize<span class="hljs-comment">[ny]</span><span class="hljs-comment">[nx]</span>.Blue) / 3;<br><br>                if (gray == 0) &#123; // 检查周围是否有黑色像素<br>                    isEroded = 1;<br>                    break;<br>                &#125;<br>            &#125;<br><br>            if (isEroded) &#123;<br>                Erode<span class="hljs-comment">[y]</span><span class="hljs-comment">[x]</span>.Red = Erode<span class="hljs-comment">[y]</span><span class="hljs-comment">[x]</span>.Green = Erode<span class="hljs-comment">[y]</span><span class="hljs-comment">[x]</span>.Blue = 0;<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>二值图像开操作 (Binary image opening)</strong>: 这是先进行侵蚀然后进行扩张的过程。这可以帮助消除小的白色噪声区域。</p>
+</li>
+<li><p><strong>二值图像闭操作 (Binary image closing)</strong>: 这是先进行扩张然后进行侵蚀的过程。这可以帮助填充图像中的小黑色孔洞。</p>
+</li>
+</ol>
+<h3 id="三、实验步骤与分析"><a href="#三、实验步骤与分析" class="headerlink" title="三、实验步骤与分析"></a>三、实验步骤与分析</h3><p>1.读取bmp图像并储存</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdint.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;math.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAX_VALUE 256</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> WORD;<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> DWORD;<br><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> pack(push, 1)</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">BITMAPFILEHEADER</span>&#123;<br>	WORD bfTYPE;<br>	DWORD bfSIZE;<br>	WORD bfReserved1;<br>	WORD bfReserved2;<br>	DWORD bfOffset;<br>&#125;BMPFILEHEADER;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">BITMAPINFOHEADER</span>&#123;<br>	DWORD bInfoSize;<br>	DWORD bWidth;<br>	DWORD bHeight;<br>	WORD bPlanes;<br>	WORD bBitCount;<br>	DWORD bCompression;<br>	DWORD bmpImageSize;<br>	DWORD bXPelsPerMeter;<br>	DWORD bYPelsPerMeter;<br>	DWORD bClrUsed;<br>	DWORD bClrImportant;<br>&#125;BMPINFOHEADER;<br><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> pack(pop)</span><br><br>BMPFILEHEADER filehead;<br>BMPINFOHEADER infohead;<br><span class="hljs-type">int</span> ImageHeight, ImageWidth;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">RGB</span>&#123;<br>	WORD Blue;<br>	WORD Green;<br>	WORD Red;<br>	WORD rgbReserved;<br>&#125; RGBQUAD;<br><br>RGBQUAD InitialRGB[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>];<br><span class="hljs-type">double</span> GrayY[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>];<br><span class="hljs-type">double</span> GrayU[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>];<br><span class="hljs-type">double</span> GrayV[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>];<br>RGBQUAD Gray[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>];<br>RGBQUAD Binarize[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>];<br>RGBQUAD Erode[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>];<br>RGBQUAD dilate[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>];<br>RGBQUAD open[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>];<br>RGBQUAD close[<span class="hljs-number">1001</span>][<span class="hljs-number">1001</span>];<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">FILE *<span class="hljs-built_in">fp</span>;<br>	if( ( <span class="hljs-built_in">fp</span> = fopen(<span class="hljs-string">&quot;Lena.bmp&quot;</span>,<span class="hljs-string">&quot;rb&quot;</span>) ) == NULL )&#123;<br>		printf(<span class="hljs-string">&quot;Image Opening Error!&quot;</span>);<br>        exit(<span class="hljs-number">0</span>);<br>    &#125;<br><br>	fseek(<span class="hljs-built_in">fp</span> ,<span class="hljs-number">0</span> ,SEEK_SET);<br>	fread(&amp;filehead,sizeof(<span class="hljs-keyword">BMPFILEHEADER),1,fp);</span><br><span class="hljs-keyword"></span>	fread(&amp;infohead,sizeof(<span class="hljs-keyword">BMPINFOHEADER),1,fp);</span><br><span class="hljs-keyword"></span>    fseek(<span class="hljs-built_in">fp</span>,filehead.<span class="hljs-keyword">bfOffset,SEEK_SET);</span><br><span class="hljs-keyword"></span><br>    ImageHeight = infohead.<span class="hljs-keyword">bHeight;</span><br><span class="hljs-keyword"></span>    ImageWidth = infohead.<span class="hljs-keyword">bWidth;</span><br><span class="hljs-keyword"></span><br>    for(int i = <span class="hljs-number">0</span><span class="hljs-comment">;i &lt; ImageHeight;i++)</span><br>		for(int <span class="hljs-keyword">j </span>= <span class="hljs-number">0</span><span class="hljs-comment">;j &lt; ImageWidth;j++)&#123;</span><br>            fread(&amp;InitialRGB[i][<span class="hljs-keyword">j].Blue,1,1,fp);</span><br><span class="hljs-keyword"></span>            fread(&amp;InitialRGB[i][<span class="hljs-keyword">j].Green,1,1,fp);</span><br><span class="hljs-keyword"></span>            fread(&amp;InitialRGB[i][<span class="hljs-keyword">j].Red,1,1,fp);</span><br><span class="hljs-keyword"></span>        &#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.将原始图像转化为灰度图</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs inform7">void getGrayimage(int width, int height)&#123;<br>    for(int i = 0;i &lt; height;i++)<br>		for(int j = 0;j &lt; width;j++)&#123;<br>			GrayY<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = (double)InitialRGB<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Red*0.299 + (double)InitialRGB<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Green*0.587 + (double)InitialRGB<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Blue*0.114;<br>			GrayU<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = -InitialRGB<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Red*0.147 - InitialRGB<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Green*0.289 + InitialRGB<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Blue*0.435;<br>			GrayV<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> = InitialRGB<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Red*0.615 - InitialRGB<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Green*0.515 - InitialRGB<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Blue*0.100;<br>		&#125;<br><br>	for(int i = 0;i &lt; height;i++)<br>		for(int j = 0;j &lt; width;j++)&#123;<br><br>			if(GrayY<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> &gt; 255)&#123;<br>				Gray<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Red = 255;<br>			    Gray<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Green = 255;<br>			    Gray<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Blue = 255;<br>			&#125;<br><br>			else if(GrayY<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>&lt;0)&#123;<br>				Gray<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Red = 0;<br>			    Gray<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Green = 0;<br>			    Gray<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Blue = 0;<br>			&#125;<br><br>			else&#123;<br>				Gray<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Red = GrayY<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>;<br>			    Gray<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Green = GrayY<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>;<br>			    Gray<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>.Blue = GrayY<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span>;<br>			&#125;<br>				<br>		&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3.对图像进行二值化、erosion、dilation、opening、closing操作</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs scss">    <span class="hljs-built_in">binarization</span>(ImageWidth, ImageHeight, otsuThreshold(ImageWidth ,ImageHeight));<br><span class="hljs-built_in">erosion</span>(ImageWidth, ImageHeight);<br><span class="hljs-built_in">dilation</span>(ImageWidth, ImageHeight);<br><span class="hljs-built_in">opening</span>(ImageWidth, ImageHeight);<br><span class="hljs-built_in">closing</span>(ImageWidth, ImageHeight);<br></code></pre></td></tr></table></figure>
+
+<h3 id="四、实验环境及运行方法"><a href="#四、实验环境及运行方法" class="headerlink" title="四、实验环境及运行方法"></a>四、实验环境及运行方法</h3><p>    实验环境：VSCode</p>
+<p>    测试方法：输入原始bmp文件，运行程序，检查文件夹中生成相应的图像</p>
+<h3 id="五、实验结果展示"><a href="#五、实验结果展示" class="headerlink" title="五、实验结果展示"></a>五、实验结果展示</h3><p>原始图片(Lena)：</p>
+<img src="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/6ba1ea31e3ed24ec3c8f862b1397524.png" srcset="/img/loading.gif" lazyload title="" alt="6ba1ea31e3ed24ec3c8f862b1397524.png" width="385">
+
+<p>二值化图片：</p>
+<img src="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/4f370b067bf6c372aba3f468ca9bdb4.png" srcset="/img/loading.gif" lazyload title="" alt="4f370b067bf6c372aba3f468ca9bdb4.png" width="383">
+
+<p>erosion：</p>
+<img src="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/848daf187445808be2a00859366356a.png" srcset="/img/loading.gif" lazyload title="" alt="848daf187445808be2a00859366356a.png" width="385">
+
+<p>dilation：</p>
+<img src="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/9e92991266504c17d06b7597960ddb6.png" srcset="/img/loading.gif" lazyload title="" alt="9e92991266504c17d06b7597960ddb6.png" width="382">
+
+<p>opening:</p>
+<img src="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/4c7c067e7961590ab6423b4a7c4ef09.png" srcset="/img/loading.gif" lazyload title="" alt="4c7c067e7961590ab6423b4a7c4ef09.png" width="384">
+
+<p>closing: </p>
+<img src="file:///C:/Users/XYZ/Documents/WeChat%20Files/wxid_bsolpufiwdz622/FileStorage/Temp/73d076d8f96a7e50f2140ae22c60085.png" srcset="/img/loading.gif" lazyload title="" alt="73d076d8f96a7e50f2140ae22c60085.png" width="385">
+
+<h3 id="六、实验心得"><a href="#六、实验心得" class="headerlink" title="六、实验心得"></a>六、实验心得</h3><p>        实验过程中，我深切体会到理论与实践结合的重要性。这题目依旧是看着不难实际操作要考虑很多细节。实验中遇到最大的问题是threshold的otsu算法，希望是对的（大哭</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="category-chain-item">课程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/2023-2024%E7%A7%8B%E5%86%AC%E5%AD%A6%E6%9C%9F/" class="category-chain-item">2023-2024秋冬学期</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/2023-2024%E7%A7%8B%E5%86%AC%E5%AD%A6%E6%9C%9F/%E5%9B%BE%E5%83%8F%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86/" class="category-chain-item">图像信息处理</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>图像信息处理HW2Report</div>
+      <div>http://example.com/2023/11/02/图像信息处理HW2Report/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ice Bear</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月2日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/03/%E8%AE%AD%E7%BB%83%E6%97%A5%E8%AE%B0/" title="训练日记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">训练日记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/01/FDSProject2Report/" title="FDSProject2Report">
+                        <span class="hidden-mobile">FDSProject2Report</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
