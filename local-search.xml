@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>健身计划-蹲</title>
+    <link href="/2023/11/04/%E5%81%A5%E8%BA%AB%E8%AE%A1%E5%88%92-%E8%B9%B2/"/>
+    <url>/2023/11/04/%E5%81%A5%E8%BA%AB%E8%AE%A1%E5%88%92-%E8%B9%B2/</url>
+    
+    <content type="html"><![CDATA[<h4 id="蹲："><a href="#蹲：" class="headerlink" title="蹲："></a>蹲：</h4><p><strong>热身：</strong></p><p>上半身同推日热身</p><p>泡沫轴放松小腿后侧 左右各8-12次</p><p>泡沫轴放松大腿后侧 左右各8-12次</p><p>泡沫轴压大腿前侧8-10次</p><p>髋关节拉伸（左右90°下压）8次</p><p>髋关节拉伸变式（下压后顶跨起身）5次</p><p>拉伸大腿后侧立链（手抓脚尖对抗起立）8次</p><p>一侧腿跪地另一侧腿45°下压 10次</p><p><strong>深蹲</strong>：</p><p>1.高度</p><p>2.握距</p><p>3.单脚进杠 杠铃稳定放在斜方肌上 双脚进杠</p><p>4.吸气 发力出杠</p><p>5.四五步内调整好站位 吸气 下蹲 膝盖向外打开 完全蹲起后呼气</p><p>注意杠铃左右平衡和双脚对称</p><p><strong>保加利亚蹲</strong>：</p><p>单脚放在凳子上，坐下，另一只脚伸直就是站位</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>训练计划</category>
+      
+      <category>蹲</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>训练日记</title>
     <link href="/2023/11/03/%E8%AE%AD%E7%BB%83%E6%97%A5%E8%AE%B0/"/>
     <url>/2023/11/03/%E8%AE%AD%E7%BB%83%E6%97%A5%E8%AE%B0/</url>
@@ -50,7 +71,7 @@
     <link href="/2023/11/01/FDSProject2Report/"/>
     <url>/2023/11/01/FDSProject2Report/</url>
     
-    <content type="html"><![CDATA[<h3 id="Chapter-1：Introduction"><a href="#Chapter-1：Introduction" class="headerlink" title="Chapter 1：Introduction"></a>Chapter 1：Introduction</h3><p>xx^2&#x2F;xy*xy+a^a</p><p>xy<em>2</em>xx^(2-1)*1+ln(xx)<em>0</em>xx^2&#x2F;xy</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="Chapter-1：Introduction"><a href="#Chapter-1：Introduction" class="headerlink" title="Chapter 1：Introduction"></a>Chapter 1：Introduction</h3><p>    Differentiation is an indispensable part of advanced mathematics, but when the number of variables becomes too large, manual differentiation becomes particularly cumbersome. Consequently, we aim to write a program that automatically differentiates with respect to all the variables contained in an expression and provides the simplified results.</p><p>Chapter 2 ：Algorithm Specification</p>]]></content>
     
     
     <categories>
