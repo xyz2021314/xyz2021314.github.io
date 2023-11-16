@@ -4,6 +4,65 @@
   
   
   <entry>
+    <title>宏观经济学-导论</title>
+    <link href="/2023/11/16/%E5%AE%8F%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6-%E5%AF%BC%E8%AE%BA/"/>
+    <url>/2023/11/16/%E5%AE%8F%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6-%E5%AF%BC%E8%AE%BA/</url>
+    
+    <content type="html"><![CDATA[<h1>宏观经济学——导论</h1><p><strong>课外参考教材：</strong></p><p>保罗·萨缪尔森：《经济学》</p><p>格里高利·曼昆：《经济学原理》</p><h2 id="宏观经济学的一些基本概念和定义：">宏观经济学的一些基本概念和定义：</h2><p>宏观经济学强调 <mark>总量</mark> 的概念，如总产量，总需求，国民收入等</p><p>宏观经济学创始人：凯恩斯，著作 <strong>《就业利息和货币通论》</strong>，简称 <strong>《通论》</strong></p><h2 id="微观经济学和宏观经济学的差别：">微观经济学和宏观经济学的差别：</h2><p>$$<br>\begin{cases}<br>微观经济学：理性人假设\<br>宏观经济学：合成谬误假设<br>\end{cases}\</p><p>$$</p><p><strong>合成谬误假设</strong>：个体追求效用最大化不一定导致集体效用最大化</p><p>e.g. 剧场火灾/银行挤兑（假设有传言银行要破产，每个存款人都选择取钱，保证自己的利益损失最小，但是所有存款人挤兑导致银行破产，使一部分存款人损失存款）</p><p>$$<br>\begin{cases}<br>微观经济学：市场出清假设\<br>宏观经济学：市场非出清假设<br>\end{cases}<br>$$</p><p><strong>市场出清假设</strong>：从理论上说，价格过高，供过于求；价格过低，供不应求。市场上供不应求和供过于求都是暂时的，只要价格调整到合适的高低，市场就能达到出清的状态。</p><p><strong>市场非出清假设</strong>：宏观经济学认为市场在很多时候都是非出清的。其中一个重要因素就是菜单成本——指零售商在价格调整时产生的成本负担（餐厅餐品价格变动，所有的菜单都需要重新印刷引发的成本。广义上说，每个厂商改变价格都需要一定成本，或许是宣传，或许是印刷等）。<u>如果菜单成本比改变价格带来的利润增量高</u>，商家作为理性人一定会选择不改变价格。</p><p>$$<br>\begin{cases}<br>微观经济学：市场的帕累托有效性\<br>宏观经济学：市场失灵<br>\end{cases}<br>$$</p><p><strong>帕累托有效性</strong>：按照市场均衡理论，经过市场的自动调节，一定能达到某个状态使得任意一点扰动都会减少市场中一部分人的利润。这个需求供给的均衡点称为帕累托最优或帕累托有效。</p><p><strong>市场失灵</strong>：市场非出清假设导致实际上市场不可能根据微观经济学所设想的最终达到帕累托最优均衡，而是很可能发生偏移甚至造成市场崩溃。</p><p>$$<br>\begin{cases}<br>微观经济学：自由放任市场组织\<br>宏观经济学：国家干预<br>\end{cases}<br>$$</p><p>$$<br>\begin{cases}<br>微观经济学：亚当·斯密的“看不见的手”\<br>宏观经济学：凯恩斯的“看得见的手”<br>\end{cases}<br>$$</p><p><strong>e.g.</strong> 美国次贷危机后奥巴马的财政支持计划/中国2008金融危机的四万亿财政投资计划</p><p>凯恩斯指出经济危机产生的三大规律</p><p>$$<br>\begin{cases}<br>边际消费倾向递减规律\<br>投资边际收益递减规律\<br>灵活偏好与流动性陷阱<br>\end{cases}<br>$$</p><p>（前两个同微观经济学边际倾向递减规律很好理解）</p><p><strong>灵活偏好与流动性陷阱：</strong></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>课程笔记</category>
+      
+      <category>2023-2024秋冬学期</category>
+      
+      <category>宏观经济学</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>FDS-Chapter8</title>
+    <link href="/2023/11/15/FDS-Chapter8/"/>
+    <url>/2023/11/15/FDS-Chapter8/</url>
+    
+    <content type="html"><![CDATA[<h1>Chapter 8 不相交集ADT</h1><h2 id="8-1-等价关系">8.1 等价关系</h2><p>等价关系（equivalence relation）满足自反性、对称性、传递性（在离散数学里已经学习过，不再赘述）</p><h2 id="8-2-动态等价性关系">8.2 动态等价性关系</h2><p><strong>教材原文</strong>摘抄如下：</p><p>$a\in S$的等价类（equivalence class）是S的一个子集，它包含所有与a有关系的元素。注意，等价类形成对S的一个划分：S的每一个成员恰好出现在一个等价类中。为确定是否a~b，我们只需验证a和b是否都在同一个等价类中。</p><p>这段话看着头大…举个例子：在集合 $ A = &lt;!–swig￼0–&gt;,d} $ 中，集合{a,b,c} 就是a、b、c的等价类。</p><h2 id="8-3-基本数据结构">8.3 基本数据结构</h2><p>一维数组，数组元素储存该点所在树的根节点编号，根节点储存$-树的结点数$。</p><p>其余略。</p><h2 id="8-4-灵巧求并算法">8.4 灵巧求并算法</h2><p>为维护树的深度（一般最坏情况为$logN$），进而控制Find的时间复杂度，我们在Union两个集合的时候一般选择Union-By-Size。即：每次执行Union时都将较小的树作为子树连接到较大的那棵树下。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>课程笔记</category>
+      
+      <category>2023-2024秋冬学期</category>
+      
+      <category>数据结构基础</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IS-LM模型</title>
+    <link href="/2023/11/15/IS-LM%E6%A8%A1%E5%9E%8B/"/>
+    <url>/2023/11/15/IS-LM%E6%A8%A1%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>FDS Chapter9</title>
     <link href="/2023/11/13/FDS-Chapter9/"/>
     <url>/2023/11/13/FDS-Chapter9/</url>

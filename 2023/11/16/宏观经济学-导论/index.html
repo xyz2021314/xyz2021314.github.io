@@ -16,23 +16,21 @@
   <meta name="author" content="Ice Bear">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Chapter 9 Graph Algorithm 9.1 若干定义 图 G &#x3D; （V，E） 由顶点vertex集V和边edge集E组成。 如果在一个无向图中从每一个顶点到每个其他顶点都存在一条路径，则称该无向图是连通的（connected） 强连通（strongly connected）图：有向图中每一个顶点到每个其他顶点都存在一条路径。 基础图（underlying graph）：有向图去掉方">
+    <meta name="description" content="宏观经济学——导论 课外参考教材： 保罗·萨缪尔森：《经济学》 格里高利·曼昆：《经济学原理》 宏观经济学的一些基本概念和定义： 宏观经济学强调 总量 的概念，如总产量，总需求，国民收入等 宏观经济学创始人：凯恩斯，著作 《就业利息和货币通论》，简称 《通论》 微观经济学和宏观经济学的差别： $$ \begin{cases} 微观经济学：理性人假设\ 宏观经济学：合成谬误假设 \end{cases">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FDS Chapter9">
-<meta property="og:url" content="http://example.com/2023/11/13/FDS-Chapter9/index.html">
+<meta property="og:title" content="宏观经济学-导论">
+<meta property="og:url" content="http://example.com/2023/11/16/%E5%AE%8F%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6-%E5%AF%BC%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Chapter 9 Graph Algorithm 9.1 若干定义 图 G &#x3D; （V，E） 由顶点vertex集V和边edge集E组成。 如果在一个无向图中从每一个顶点到每个其他顶点都存在一条路径，则称该无向图是连通的（connected） 强连通（strongly connected）图：有向图中每一个顶点到每个其他顶点都存在一条路径。 基础图（underlying graph）：有向图去掉方">
+<meta property="og:description" content="宏观经济学——导论 课外参考教材： 保罗·萨缪尔森：《经济学》 格里高利·曼昆：《经济学原理》 宏观经济学的一些基本概念和定义： 宏观经济学强调 总量 的概念，如总产量，总需求，国民收入等 宏观经济学创始人：凯恩斯，著作 《就业利息和货币通论》，简称 《通论》 微观经济学和宏观经济学的差别： $$ \begin{cases} 微观经济学：理性人假设\ 宏观经济学：合成谬误假设 \end{cases">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="file:///C:/Users/XYZ/Desktop/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
-<meta property="article:published_time" content="2023-11-13T06:38:51.000Z">
-<meta property="article:modified_time" content="2023-11-13T07:27:29.051Z">
+<meta property="article:published_time" content="2023-11-16T02:56:06.000Z">
+<meta property="article:modified_time" content="2023-11-16T10:52:35.762Z">
 <meta property="article:author" content="Ice Bear">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="file:///C:/Users/XYZ/Desktop/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
   
   
   
-  <title>FDS Chapter9 - Hexo</title>
+  <title>宏观经济学-导论 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="FDS Chapter9"></span>
+            <span id="subtitle" data-typed-text="宏观经济学-导论"></span>
           
         </div>
 
@@ -209,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-13 14:38" pubdate>
-          2023年11月13日 下午
+        <time datetime="2023-11-16 10:56" pubdate>
+          2023年11月16日 上午
         </time>
       </span>
     
@@ -221,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          972 字
+          1.1k 字
         
       </span>
     
@@ -269,59 +267,66 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">FDS Chapter9</h1>
+            <h1 id="seo-header">宏观经济学-导论</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>Chapter 9 Graph Algorithm</h1>
-<h2 id="9-1-若干定义">9.1 若干定义</h2>
-<p>图 <strong>G = （V，E）</strong> 由顶点<code>vertex</code>集V和边<code>edge</code>集E组成。</p>
-<p>如果在一个无向图中从每一个顶点到每个其他顶点都存在一条路径，则称该无向图是连通的（connected）</p>
-<p>强连通（strongly connected）图：有向图中每一个顶点到每个其他顶点都存在一条路径。</p>
-<p>基础图（underlying graph）：有向图去掉方向后得到的无向图</p>
-<p>弱联通（weakly connected）图：基础图是连通的</p>
-<h4 id="9-1-1-图的表示">9.1.1 图的表示</h4>
-<p>最简单的方式构造一张图就是使用二维数组</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>1</strong></td>
-<td>0</td>
-<td>4</td>
-<td>0</td>
-</tr>
-<tr>
-<td><strong>2</strong></td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td><strong>3</strong></td>
-<td>0</td>
-<td>7</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<p>如上数组表示1-&gt;2存在一条长度为4的边，2-&gt;1存在一条长度为3的边（其他边同理）</p>
-<p>当图为稠密（dense）图时，二维数组空间浪费少且时间复杂度低。</p>
-<p>但是显然，G = （V，E）中，若结点数比较多，边数比较少，则存在极大的空间浪费。虽然每次查找的时间复杂度都是 <strong>O(1)</strong> 。但是对于一个V = 3000，E = 4000的边，显然有 $3000^2-4000$ 的数组空间被浪费了。</p>
-<p>相应地，邻接表是牺牲了部分查找的时间复杂度，但是可以把空间复杂度控制在<strong>O(|V| + |E|)</strong>，当图是稀疏（sparse）图时，显然邻接表节省了极大的空间。</p>
-<img title="" src="file:///C:/Users/XYZ/Desktop/邻接表示意图.jpg" srcset="/img/loading.gif" lazyload alt="" width="640" data-align="center">
-<p>如上图所示，左侧index从1-7是顶点编号，在顶点struct里存储从该顶点引出的边。具体代码实现如下（in C）：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Definition of an Edge in the graph</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><br>    <span class="hljs-type">int</span> to; <span class="hljs-comment">// Destination node of the edge</span><br>    <span class="hljs-type">int</span> weight; <span class="hljs-comment">// Weight of the edge</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> *<span class="hljs-title">next</span>;</span> <span class="hljs-comment">// Pointer to the next edge in the list</span><br>&#125; Edge;<br><br><span class="hljs-comment">// Definition of a Vertex in the graph</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">vertex</span>&#123;</span><br>    <span class="hljs-type">int</span> number; <span class="hljs-comment">// Number of the current node</span><br>    Edge *next; <span class="hljs-comment">// Pointer to the list of edges connected to this node</span><br>&#125;Vertex;<br></code></pre></td></tr></table></figure>
-<p>若用邻接表表示无向图则空间使用是<strong>double</strong>的（a到b和b到a各存一条边）。</p>
-<h2 id="9-2-拓扑排序">9.2 拓扑排序</h2>
+                <h1>宏观经济学——导论</h1>
+<p><strong>课外参考教材：</strong></p>
+<p>保罗·萨缪尔森：《经济学》</p>
+<p>格里高利·曼昆：《经济学原理》</p>
+<h2 id="宏观经济学的一些基本概念和定义：">宏观经济学的一些基本概念和定义：</h2>
+<p>宏观经济学强调 <mark>总量</mark> 的概念，如总产量，总需求，国民收入等</p>
+<p>宏观经济学创始人：凯恩斯，著作 <strong>《就业利息和货币通论》</strong>，简称 <strong>《通论》</strong></p>
+<h2 id="微观经济学和宏观经济学的差别：">微观经济学和宏观经济学的差别：</h2>
+<p>$$<br>
+\begin{cases}<br>
+微观经济学：理性人假设\<br>
+宏观经济学：合成谬误假设<br>
+\end{cases}\</p>
+<p>$$</p>
+<p><strong>合成谬误假设</strong>：个体追求效用最大化不一定导致集体效用最大化</p>
+<p>e.g. 剧场火灾/银行挤兑（假设有传言银行要破产，每个存款人都选择取钱，保证自己的利益损失最小，但是所有存款人挤兑导致银行破产，使一部分存款人损失存款）</p>
+<p>$$<br>
+\begin{cases}<br>
+微观经济学：市场出清假设\<br>
+宏观经济学：市场非出清假设<br>
+\end{cases}<br>
+$$</p>
+<p><strong>市场出清假设</strong>：从理论上说，价格过高，供过于求；价格过低，供不应求。市场上供不应求和供过于求都是暂时的，只要价格调整到合适的高低，市场就能达到出清的状态。</p>
+<p><strong>市场非出清假设</strong>：宏观经济学认为市场在很多时候都是非出清的。其中一个重要因素就是菜单成本——指零售商在价格调整时产生的成本负担（餐厅餐品价格变动，所有的菜单都需要重新印刷引发的成本。广义上说，每个厂商改变价格都需要一定成本，或许是宣传，或许是印刷等）。<u>如果菜单成本比改变价格带来的利润增量高</u>，商家作为理性人一定会选择不改变价格。</p>
+<p>$$<br>
+\begin{cases}<br>
+微观经济学：市场的帕累托有效性\<br>
+宏观经济学：市场失灵<br>
+\end{cases}<br>
+$$</p>
+<p><strong>帕累托有效性</strong>：按照市场均衡理论，经过市场的自动调节，一定能达到某个状态使得任意一点扰动都会减少市场中一部分人的利润。这个需求供给的均衡点称为帕累托最优或帕累托有效。</p>
+<p><strong>市场失灵</strong>：市场非出清假设导致实际上市场不可能根据微观经济学所设想的最终达到帕累托最优均衡，而是很可能发生偏移甚至造成市场崩溃。</p>
+<p>$$<br>
+\begin{cases}<br>
+微观经济学：自由放任市场组织\<br>
+宏观经济学：国家干预<br>
+\end{cases}<br>
+$$</p>
+<p>$$<br>
+\begin{cases}<br>
+微观经济学：亚当·斯密的“看不见的手”\<br>
+宏观经济学：凯恩斯的“看得见的手”<br>
+\end{cases}<br>
+$$</p>
+<p><strong>e.g.</strong> 美国次贷危机后奥巴马的财政支持计划/中国2008金融危机的四万亿财政投资计划</p>
+<p>凯恩斯指出经济危机产生的三大规律</p>
+<p>$$<br>
+\begin{cases}<br>
+边际消费倾向递减规律\<br>
+投资边际收益递减规律\<br>
+灵活偏好与流动性陷阱<br>
+\end{cases}<br>
+$$</p>
+<p>（前两个同微观经济学边际倾向递减规律很好理解）</p>
+<p><strong>灵活偏好与流动性陷阱：</strong></p>
 
                 
               </div>
@@ -350,7 +355,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/2023-2024%E7%A7%8B%E5%86%AC%E5%AD%A6%E6%9C%9F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/" class="category-chain-item">数据结构基础</a>
+  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/2023-2024%E7%A7%8B%E5%86%AC%E5%AD%A6%E6%9C%9F/%E5%AE%8F%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="category-chain-item">宏观经济学</a>
   
   
 
@@ -374,8 +379,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>FDS Chapter9</div>
-      <div>http://example.com/2023/11/13/FDS-Chapter9/</div>
+      <div>宏观经济学-导论</div>
+      <div>http://example.com/2023/11/16/宏观经济学-导论/</div>
     </div>
     <div class="license-meta">
       
@@ -387,7 +392,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月13日</div>
+          <div>2023年11月16日</div>
         </div>
       
       
@@ -419,18 +424,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/15/IS-LM%E6%A8%A1%E5%9E%8B/" title="IS-LM模型">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">IS-LM模型</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/10/Union-Find/" title="Union/Find">
-                        <span class="hidden-mobile">Union/Find</span>
+                      <a href="/2023/11/15/FDS-Chapter8/" title="FDS-Chapter8">
+                        <span class="hidden-mobile">FDS-Chapter8</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
