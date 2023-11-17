@@ -233,7 +233,7 @@
         
         
         
-          542 分钟
+          543 分钟
         
       </span>
     
@@ -289,48 +289,48 @@
 <p>Then we need to convert the infix expression that has been read into a postfix expression before transforming it into an expression tree. Actually, it is possible to directly convert from an infix expression to an expression tree, but the aforementioned process is simpler and easier to understand. <strong>The key point</strong> during the conversion to a postfix expression is how to distinguish between variable names like “x” and “xy”, as well as function names such as “log” and “pow”.</p>
 <p>Converting an infix expression to a postfix expression involves a process where operators are moved after their operands.</p>
 <ol>
-<li class="lvl-3">
+<li>
 <p><strong>Create an Operator Stack:</strong> A stack is initialized to keep track of operators and to help with the precedence rules.</p>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Iterate through Characters in the Infix Expression:</strong> The function loops through each character of the infix expression.</p>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Operands (Variables and Numbers):</strong></p>
-<ul class="lvl-2">
-<li class="lvl-5">If the character is an alphabetic letter, it may be part of a variable or a function like <code>sin</code>, <code>cos</code>, <code>ln</code>, etc.</li>
-<li class="lvl-5">For functions, the code checks for precedence before pushing them onto the stack.</li>
-<li class="lvl-5">If it is a standalone variable, it is directly moved to the postfix array.</li>
-<li class="lvl-5">Numbers are similarly directly moved to the postfix array.</li>
+<ul>
+<li>If the character is an alphabetic letter, it may be part of a variable or a function like <code>sin</code>, <code>cos</code>, <code>ln</code>, etc.</li>
+<li>For functions, the code checks for precedence before pushing them onto the stack.</li>
+<li>If it is a standalone variable, it is directly moved to the postfix array.</li>
+<li>Numbers are similarly directly moved to the postfix array.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Operators:</strong></p>
-<ul class="lvl-2">
-<li class="lvl-5">When an operator is encountered, any operators on the stack with higher or equal precedence are popped from the stack and added to the postfix array.</li>
-<li class="lvl-5">The encountered operator is then pushed onto the stack.</li>
+<ul>
+<li>When an operator is encountered, any operators on the stack with higher or equal precedence are popped from the stack and added to the postfix array.</li>
+<li>The encountered operator is then pushed onto the stack.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Parentheses:</strong></p>
-<ul class="lvl-2">
-<li class="lvl-5">An opening parenthesis <code>(</code> is pushed onto the stack.</li>
-<li class="lvl-5">If an opening parenthesis is immediately followed by a unary <code>+</code> or <code>-</code>, the code modifies the expression to handle it correctly.</li>
-<li class="lvl-5">A closing parenthesis <code>)</code> causes the stack to be popped until the corresponding opening parenthesis is encountered. The operators popped off are added to the postfix array.</li>
+<ul>
+<li>An opening parenthesis <code>(</code> is pushed onto the stack.</li>
+<li>If an opening parenthesis is immediately followed by a unary <code>+</code> or <code>-</code>, the code modifies the expression to handle it correctly.</li>
+<li>A closing parenthesis <code>)</code> causes the stack to be popped until the corresponding opening parenthesis is encountered. The operators popped off are added to the postfix array.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Functions with Arguments (like <code>log</code>, <code>pow</code>):</strong></p>
-<ul class="lvl-2">
-<li class="lvl-5">The code identifies functions with arguments by matching specific function names and then parses their arguments.</li>
-<li class="lvl-5">The arguments themselves are processed by a recursive call to <code>infixToPostfix</code>.</li>
-<li class="lvl-5">After processing the arguments, the function name is treated as an operator and handled accordingly.</li>
+<ul>
+<li>The code identifies functions with arguments by matching specific function names and then parses their arguments.</li>
+<li>The arguments themselves are processed by a recursive call to <code>infixToPostfix</code>.</li>
+<li>After processing the arguments, the function name is treated as an operator and handled accordingly.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Completing the Postfix Array:</strong></p>
-<ul class="lvl-2">
-<li class="lvl-5">After the entire infix expression has been read, any remaining operators on the stack are popped and added to the postfix array.</li>
+<ul>
+<li>After the entire infix expression has been read, any remaining operators on the stack are popped and added to the postfix array.</li>
 </ul>
 </li>
 </ol>
@@ -342,35 +342,35 @@
 <p>Now we’ve got postfix expression and the next step is to create an expression tree from postfix expression.</p>
 <p>Creating an expression tree from a postfix expression involves the following steps:</p>
 <ol>
-<li class="lvl-3">
+<li>
 <p><strong>Initialize an Empty Stack</strong>: Begin by creating an empty stack that will be used to hold nodes of the expression tree.</p>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Iterate Over Postfix Elements</strong>: Process each element in the postfix expression from left to right.</p>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Create Nodes for Operands and Operators</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5"><strong>Operands</strong>: When you encounter an operand (a number or a variable), create a tree node with no children (since operands are leaves in the expression tree) and push it onto the stack.</li>
-<li class="lvl-5"><strong>Operators</strong>: When you encounter an operator:
-<ul class="lvl-4">
-<li class="lvl-7">For a <strong>binary operator</strong> (like <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>pow</code>, <code>log</code>), pop the top two nodes from the stack. The second node popped is the left child, and the first node popped is the right child of the operator node. Then, push the newly created operator node back onto the stack.</li>
-<li class="lvl-7">For a <strong>unary operator</strong> (like <code>sin</code>, <code>cos</code>, <code>exp</code>, <code>ln</code>), pop the top node from the stack and make it the right child of the operator node (unary operators usually have only one operand). Then, push the operator node onto the stack.</li>
+<ul>
+<li><strong>Operands</strong>: When you encounter an operand (a number or a variable), create a tree node with no children (since operands are leaves in the expression tree) and push it onto the stack.</li>
+<li><strong>Operators</strong>: When you encounter an operator:
+<ul>
+<li>For a <strong>binary operator</strong> (like <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>pow</code>, <code>log</code>), pop the top two nodes from the stack. The second node popped is the left child, and the first node popped is the right child of the operator node. Then, push the newly created operator node back onto the stack.</li>
+<li>For a <strong>unary operator</strong> (like <code>sin</code>, <code>cos</code>, <code>exp</code>, <code>ln</code>), pop the top node from the stack and make it the right child of the operator node (unary operators usually have only one operand). Then, push the operator node onto the stack.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handle Special Cases</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">If there is an operator with different arity (number of operands), special handling is needed to correctly assign children.</li>
-<li class="lvl-5">Additionally, if the stack runs out of elements prematurely or contains extra elements at the end, this might indicate an error in the postfix expression.</li>
+<ul>
+<li>If there is an operator with different arity (number of operands), special handling is needed to correctly assign children.</li>
+<li>Additionally, if the stack runs out of elements prematurely or contains extra elements at the end, this might indicate an error in the postfix expression.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Complete the Tree</strong>: After processing all elements of the postfix expression, the stack should have only one element left. This single element is the root of the constructed expression tree.</p>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Return the Expression Tree</strong>: The final tree represents the hierarchical structure of the postfix expression and can be used to evaluate the expression or to convert it to other forms (like infix or prefix).</p>
 </li>
 </ol>
@@ -381,65 +381,65 @@
 <p>The provided code is a C function designed to compute the derivative of a mathematical expression represented as a binary tree, where each node can be an operand, a variable, or an operator. The purpose of the function is to differentiate the expression with respect to a given variable and return the result as a string.</p>
 <p>Here are the key concepts and processes used in the code:</p>
 <ol>
-<li class="lvl-3">
+<li>
 <p><strong>Recursive Traversal</strong>:<br>
 The function processes various mathematical operations by recursively traversing the expression tree.</p>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Basic Derivative Rules</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">The derivative of a variable (e.g., <code>x</code>) is <code>1</code>.</li>
-<li class="lvl-5">The derivative of a constant or an expression that does not contain the variable is <code>0</code>.</li>
+<ul>
+<li>The derivative of a variable (e.g., <code>x</code>) is <code>1</code>.</li>
+<li>The derivative of a constant or an expression that does not contain the variable is <code>0</code>.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Sum and Difference Rule</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">The derivative of <code>f + g</code> is <code>f' + g'</code>.</li>
-<li class="lvl-5">The derivative of <code>f - g</code> is <code>f' - g'</code>.</li>
+<ul>
+<li>The derivative of <code>f + g</code> is <code>f' + g'</code>.</li>
+<li>The derivative of <code>f - g</code> is <code>f' - g'</code>.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Product Rule</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">The derivative of <code>f * g</code> is <code>f' * g + f * g'</code>.</li>
+<ul>
+<li>The derivative of <code>f * g</code> is <code>f' * g + f * g'</code>.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Quotient Rule</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">The derivative of <code>f / g</code> is <code>(f' * g - f * g') / g^2</code>.</li>
+<ul>
+<li>The derivative of <code>f / g</code> is <code>(f' * g - f * g') / g^2</code>.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Chain Rule for Composite Functions</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">The derivatives of functions like <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>ln</code>, <code>exp</code>, <code>pow</code>, etc., are computed using the chain rule.</li>
+<ul>
+<li>The derivatives of functions like <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>ln</code>, <code>exp</code>, <code>pow</code>, etc., are computed using the chain rule.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Power Function Derivative</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">The derivative of <code>f^g</code> is <code>g * f^(g-1) * f' + ln(f) * g' * f^g</code>.</li>
+<ul>
+<li>The derivative of <code>f^g</code> is <code>g * f^(g-1) * f' + ln(f) * g' * f^g</code>.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>String Operations</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">The <code>strcat</code> function is used to append the derivative results to the string <code>result</code>.</li>
+<ul>
+<li>The <code>strcat</code> function is used to append the derivative results to the string <code>result</code>.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Helper Functions</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">The <code>checkNode</code> function is assumed to check if a node contains the variable.</li>
-<li class="lvl-5">The <code>inorderTraversal</code> function is assumed to perform an in-order traversal of the tree and append the expression to the result string.</li>
+<ul>
+<li>The <code>checkNode</code> function is assumed to check if a node contains the variable.</li>
+<li>The <code>inorderTraversal</code> function is assumed to perform an in-order traversal of the tree and append the expression to the result string.</li>
 </ul>
 </li>
-<li class="lvl-4">
+<li>
 <p><strong>Handling Special Functions</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-6">The derivatives of special mathematical functions (like <code>log</code>) are calculated using specific rules.</li>
+<ul>
+<li>The derivatives of special mathematical functions (like <code>log</code>) are calculated using specific rules.</li>
 </ul>
 </li>
 </ol>
@@ -447,132 +447,128 @@ The function processes various mathematical operations by recursively traversing
 <p>Aftering differentiating, we may gets millions of brackets. It’s so horrible because the purpose of programming is to make human being more relaxed rather than hit them with nauseating expressions.</p>
 <p></p>
 <ol>
-<li class="lvl-3">
+<li>
 <p><strong>Recursive Simplification</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">The function first recursively calls <code>simplify</code> on the left and right child nodes.</li>
-<li class="lvl-5">After simplifying the child nodes, it attempts to simplify the current node.</li>
+<ul>
+<li>The function first recursively calls <code>simplify</code> on the left and right child nodes.</li>
+<li>After simplifying the child nodes, it attempts to simplify the current node.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Addition (+)</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">If either child is ‘0’, it is an additive identity and can be removed (e.g., <code>x + 0</code> simplifies to <code>x</code>).</li>
-<li class="lvl-5">If both children are ‘0’, the entire expression simplifies to ‘0’.</li>
+<ul>
+<li>If either child is ‘0’, it is an additive identity and can be removed (e.g., <code>x + 0</code> simplifies to <code>x</code>).</li>
+<li>If both children are ‘0’, the entire expression simplifies to ‘0’.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Subtraction (-)</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">If the left child is ‘0’ and the right child is also ‘0’, the expression simplifies to ‘0’.</li>
-<li class="lvl-5">If there is no left child and the right child is ‘0’, the expression simplifies to an empty string (effectively removing the node).</li>
-<li class="lvl-5">If the left child is ‘0’, the expression simplifies to the negative of the right child (e.g., <code>0 - x</code> simplifies to <code>-x</code>).</li>
-<li class="lvl-5">If the right child is ‘0’, it can be removed, leaving just the left child.</li>
-<li class="lvl-5">If both children are numeric, their values are subtracted and the result is stored in the current node.</li>
+<ul>
+<li>If the left child is ‘0’ and the right child is also ‘0’, the expression simplifies to ‘0’.</li>
+<li>If there is no left child and the right child is ‘0’, the expression simplifies to an empty string (effectively removing the node).</li>
+<li>If the left child is ‘0’, the expression simplifies to the negative of the right child (e.g., <code>0 - x</code> simplifies to <code>-x</code>).</li>
+<li>If the right child is ‘0’, it can be removed, leaving just the left child.</li>
+<li>If both children are numeric, their values are subtracted and the result is stored in the current node.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Multiplication (*)</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">If either child is ‘0’, the entire expression simplifies to ‘0’ due to the multiplicative zero property.</li>
-<li class="lvl-5">If both children are ‘1’, it simplifies to ‘1’ due to the multiplicative identity.</li>
-<li class="lvl-5">If one child is ‘1’, it can be removed, leaving the other child.</li>
+<ul>
+<li>If either child is ‘0’, the entire expression simplifies to ‘0’ due to the multiplicative zero property.</li>
+<li>If both children are ‘1’, it simplifies to ‘1’ due to the multiplicative identity.</li>
+<li>If one child is ‘1’, it can be removed, leaving the other child.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Division (/)</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">If the left child is ‘0’, the entire expression simplifies to ‘0’.</li>
-<li class="lvl-5">If the right child is ‘1’, it can be removed, leaving just the left child.</li>
+<ul>
+<li>If the left child is ‘0’, the entire expression simplifies to ‘0’.</li>
+<li>If the right child is ‘1’, it can be removed, leaving just the left child.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Power (^)</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">If the left child is ‘0’, the entire expression simplifies to ‘0’.</li>
-<li class="lvl-5">If the right child is ‘0’, the expression simplifies to ‘1’.</li>
-<li class="lvl-5">If the right child is ‘1’, the expression simplifies to the left child.</li>
+<ul>
+<li>If the left child is ‘0’, the entire expression simplifies to ‘0’.</li>
+<li>If the right child is ‘0’, the expression simplifies to ‘1’.</li>
+<li>If the right child is ‘1’, the expression simplifies to the left child.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Logarithmic (log) and Natural Logarithm (ln) Functions</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">If the argument of <code>log</code> or <code>ln</code> is ‘1’, the expression simplifies to ‘0’.</li>
-<li class="lvl-5">For <code>log</code>, if the base and the argument are the same, the expression simplifies to ‘1’.</li>
+<ul>
+<li>If the argument of <code>log</code> or <code>ln</code> is ‘1’, the expression simplifies to ‘0’.</li>
+<li>For <code>log</code>, if the base and the argument are the same, the expression simplifies to ‘1’.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Trigonometric Functions (cos, sin, tan)</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">For <code>cos</code>, if the argument is ‘0’, the expression simplifies to ‘1’.</li>
-<li class="lvl-5">For <code>sin</code> and <code>tan</code>, if the argument is ‘0’, the expression simplifies to ‘0’.</li>
+<ul>
+<li>For <code>cos</code>, if the argument is ‘0’, the expression simplifies to ‘1’.</li>
+<li>For <code>sin</code> and <code>tan</code>, if the argument is ‘0’, the expression simplifies to ‘0’.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Cleaning Up</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">After simplification, the current node’s children are set to <code>NULL</code>, indicating that they are no longer part of the simplified expression.</li>
+<ul>
+<li>After simplification, the current node’s children are set to <code>NULL</code>, indicating that they are no longer part of the simplified expression.</li>
 </ul>
 </li>
-<li class="lvl-4">
+<li>
 <p><strong>String Operations</strong>:</p>
 </li>
 </ol>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>Uses <code>strcpy</code> and <code>strcat</code> to manipulate the <code>value</code> within the nodes.</p>
-</li>
-<li class="lvl-2">
-<p>Uses <code>sprintf</code> to convert the result of numeric computations back to a string.</p>
-</li>
+<ul>
+<li>Uses <code>strcpy</code> and <code>strcat</code> to manipulate the <code>value</code> within the nodes.</li>
+<li>Uses <code>sprintf</code> to convert the result of numeric computations back to a string.</li>
 </ul>
 <h4 id="Get-InorderTraversal">Get InorderTraversal</h4>
 <p>In the end, we need to inordertraverse the expression tree to get the result in infix expression.</p>
 <p></p>
 <ol>
-<li class="lvl-3">
+<li>
 <p><strong>Base Case</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">The function returns immediately if the current node is <code>NULL</code>.</li>
+<ul>
+<li>The function returns immediately if the current node is <code>NULL</code>.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Binary Operators (+, -, *, /)</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">For nodes containing binary operators, it adds a left parenthesis before recursively traversing the left subtree.</li>
+<ul>
+<li>For nodes containing binary operators, it adds a left parenthesis before recursively traversing the left subtree.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Functions (log, pow, ln, cos, sin, tan, exp)</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">For nodes representing functions like <code>log</code> and <code>pow</code>, it appends the function name, followed by a left parenthesis.</li>
-<li class="lvl-5">It then recursively calls itself on the left and right children (if applicable), separated by a comma for <code>log</code> and <code>pow</code>.</li>
-<li class="lvl-5">For functions like <code>ln</code>, <code>cos</code>, <code>sin</code>, <code>tan</code>, and <code>exp</code> that take a single argument, it calls itself on the right child only.</li>
+<ul>
+<li>For nodes representing functions like <code>log</code> and <code>pow</code>, it appends the function name, followed by a left parenthesis.</li>
+<li>It then recursively calls itself on the left and right children (if applicable), separated by a comma for <code>log</code> and <code>pow</code>.</li>
+<li>For functions like <code>ln</code>, <code>cos</code>, <code>sin</code>, <code>tan</code>, and <code>exp</code> that take a single argument, it calls itself on the right child only.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Handling Operands (Variables and Numbers)</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">For nodes containing a variable or number, it appends the node value directly to the result string.</li>
-<li class="lvl-5">It then continues the traversal to the right child, if any.</li>
+<ul>
+<li>For nodes containing a variable or number, it appends the node value directly to the result string.</li>
+<li>It then continues the traversal to the right child, if any.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Recursive Traversal</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">For other nodes, it first recursively traverses the left child, then appends the node’s value, and finally traverses the right child.</li>
+<ul>
+<li>For other nodes, it first recursively traverses the left child, then appends the node’s value, and finally traverses the right child.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>Closing Parentheses for Binary Operators</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">After traversing both subtrees of a binary operator, it adds a right parenthesis to complete the expression.</li>
+<ul>
+<li>After traversing both subtrees of a binary operator, it adds a right parenthesis to complete the expression.</li>
 </ul>
 </li>
-<li class="lvl-3">
+<li>
 <p><strong>String Concatenation</strong>:</p>
-<ul class="lvl-2">
-<li class="lvl-5">Uses strcat<code>to append characters to the</code>result string.</li>
+<ul>
+<li>Uses strcat<code>to append characters to the</code>result string.</li>
 </ul>
 </li>
 </ol>
@@ -584,7 +580,7 @@ The function processes various mathematical operations by recursively traversing
 <p>Input: <strong>a*10*b+2^a/a</strong></p>
 <p>Result:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">a: ((b)*(((<span class="hljs-number">10</span>)*(<span class="hljs-number">1</span>))))+((ln(<span class="hljs-number">2</span>)*<span class="hljs-number">1</span>*<span class="hljs-number">2</span>^a))/(a)-(<span class="hljs-number">1</span>*<span class="hljs-number">2</span>^a)/a^<span class="hljs-number">2</span>)<br>Simplified derivative of variable <span class="hljs-string">&#x27;a&#x27;</span>: (((b*<span class="hljs-number">10</span>)+((ln(<span class="hljs-number">2</span>)*<span class="hljs-number">2</span>^a)/a))-(<span class="hljs-number">2</span>^a/a^<span class="hljs-number">2</span>))<br>b: (((a*<span class="hljs-number">10</span>))*<span class="hljs-number">1</span>)<br>Simplified derivative of variable <span class="hljs-string">&#x27;b&#x27;</span>: (a*<span class="hljs-number">10</span>)<br></code></pre></td></tr></table></figure>
-<p>Input: <strong>xx<sup>2/xy*xy+a</sup>a</strong></p>
+<p>Input: <strong>xx^2/xy*xy+a^a</strong></p>
 <p>Result:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">a: ((a*a^(a<span class="hljs-number">-1</span>)*<span class="hljs-number">1</span>+ln(a)*<span class="hljs-number">1</span>*a^a))<br>Simplified derivative of variable <span class="hljs-string">&#x27;a&#x27;</span>: ((a*a^(a<span class="hljs-number">-1</span>))+(ln(a)*a^a))<br>xx: (((xy)*(((<span class="hljs-number">2</span>*xx^(<span class="hljs-number">2</span><span class="hljs-number">-1</span>)*<span class="hljs-number">1</span>)/xy))))<br>Simplified derivative of variable <span class="hljs-string">&#x27;xx&#x27;</span>: (xy*((<span class="hljs-number">2</span>*xx)/xy))<br>xy: (((xx^<span class="hljs-number">2</span>/xy)*<span class="hljs-number">1</span>+xy*(<span class="hljs-number">-1</span>*xx^<span class="hljs-number">2</span>/xy^<span class="hljs-number">2</span>)))<br>Simplified derivative of variable <span class="hljs-string">&#x27;xy&#x27;</span>: ((xx^<span class="hljs-number">2</span>/xy)+(xy*(-(xx^<span class="hljs-number">2</span>/xy^<span class="hljs-number">2</span>))))<br></code></pre></td></tr></table></figure>
 <p>Input: <strong>x*ln(y)</strong></p>
