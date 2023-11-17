@@ -16,12 +16,12 @@
   <meta name="author" content="Ice Bear">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Chapter 8 不相交集ADT 8.1 等价关系 等价关系（equivalence relation）满足自反性、对称性、传递性（在离散数学里已经学习过，不再赘述） 8.2 动态等价性关系 教材原文摘抄如下： $a\in S$的等价类（equivalence class）是S的一个子集，它包含所有与a有关系的元素。注意，等价类形成对S的一个划分：S的每一个成员恰好出现在一个等价类中。为确定是否">
+    <meta name="description" content="Chapter 8 不相交集ADT8.1 等价关系等价关系（equivalence relation）满足自反性、对称性、传递性（在离散数学里已经学习过，不再赘述）     8.2 动态等价性关系教材原文摘抄如下： $a\in S$的等价类（equivalence class）是S的一个子集，它包含所有与a有关系的元素。注意，等价类形成对S的一个划分：S的每一个成员恰好出现在一个等价类中。为确定是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FDS-Chapter8">
 <meta property="og:url" content="http://example.com/2023/11/15/FDS-Chapter8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Chapter 8 不相交集ADT 8.1 等价关系 等价关系（equivalence relation）满足自反性、对称性、传递性（在离散数学里已经学习过，不再赘述） 8.2 动态等价性关系 教材原文摘抄如下： $a\in S$的等价类（equivalence class）是S的一个子集，它包含所有与a有关系的元素。注意，等价类形成对S的一个划分：S的每一个成员恰好出现在一个等价类中。为确定是否">
+<meta property="og:description" content="Chapter 8 不相交集ADT8.1 等价关系等价关系（equivalence relation）满足自反性、对称性、传递性（在离散数学里已经学习过，不再赘述）     8.2 动态等价性关系教材原文摘抄如下： $a\in S$的等价类（equivalence class）是S的一个子集，它包含所有与a有关系的元素。注意，等价类形成对S的一个划分：S的每一个成员恰好出现在一个等价类中。为确定是">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-15T11:10:15.000Z">
 <meta property="article:modified_time" content="2023-11-17T03:30:34.516Z">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          441 字
+          442 字
         
       </span>
     
@@ -276,19 +276,15 @@
             
               <div class="markdown-body">
                 
-                <h1>Chapter 8 不相交集ADT</h1>
-<h2 id="8-1-等价关系">8.1 等价关系</h2>
-<p>等价关系（equivalence relation）满足自反性、对称性、传递性（在离散数学里已经学习过，不再赘述）</p>
-<h2 id="8-2-动态等价性关系">8.2 动态等价性关系</h2>
-<p><strong>教材原文</strong>摘抄如下：</p>
+                <h1 id="Chapter-8-不相交集ADT"><a href="#Chapter-8-不相交集ADT" class="headerlink" title="Chapter 8 不相交集ADT"></a>Chapter 8 不相交集ADT</h1><h2 id="8-1-等价关系"><a href="#8-1-等价关系" class="headerlink" title="8.1 等价关系"></a>8.1 等价关系</h2><pre><code class="hljs">等价关系（equivalence relation）满足自反性、对称性、传递性（在离散数学里已经学习过，不再赘述）    
+</code></pre><h2 id="8-2-动态等价性关系"><a href="#8-2-动态等价性关系" class="headerlink" title="8.2 动态等价性关系"></a>8.2 动态等价性关系</h2><p><strong>教材原文</strong>摘抄如下：</p>
 <p>$a\in S$的等价类（equivalence class）是S的一个子集，它包含所有与a有关系的元素。注意，等价类形成对S的一个划分：S的每一个成员恰好出现在一个等价类中。为确定是否a~b，我们只需验证a和b是否都在同一个等价类中。</p>
-<p>这段话看着头大…举个例子：在集合 $ A = { {a,b,c },d } $ 中，集合{a,b,c} 就是a、b、c的等价类。</p>
-<h2 id="8-3-基本数据结构">8.3 基本数据结构</h2>
-<p>一维数组，数组元素储存该点所在树的根节点编号，根节点储存$-树的结点数$。</p>
-<p>其余略。</p>
-<h2 id="8-4-灵巧求并算法-UnionBySize">8.4 灵巧求并算法 UnionBySize</h2>
-<p>为维护树的深度（一般最坏情况为$logN$），进而控制Find的时间复杂度，我们在Union两个集合的时候一般选择Union-By-Size。即：每次执行Union时都将较小的树作为子树连接到较大的那棵树下。</p>
+<p>这段话看着头大..举个例子：在集合 $ A = { {a,b,c },d } $ 中，集合{a,b,c} 就是a、b、c的等价类。</p>
+<h2 id="8-3-基本数据结构"><a href="#8-3-基本数据结构" class="headerlink" title="8.3 基本数据结构"></a>8.3 基本数据结构</h2><pre><code class="hljs">一维数组，数组元素储存该点所在树的根节点编号，根节点储存$-树的结点数$。
 
+其余略。
+</code></pre><h2 id="8-4-灵巧求并算法-UnionBySize"><a href="#8-4-灵巧求并算法-UnionBySize" class="headerlink" title="8.4 灵巧求并算法 UnionBySize"></a>8.4 灵巧求并算法 UnionBySize</h2><pre><code class="hljs">为维护树的深度（一般最坏情况为$logN$），进而控制Find的时间复杂度，我们在Union两个集合的时候一般选择Union-By-Size。即：每次执行Union时都将较小的树作为子树连接到较大的那棵树下。
+</code></pre>
                 
               </div>
             
