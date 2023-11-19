@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="file:///C:/Users/XYZ/Desktop/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
 <meta property="article:published_time" content="2023-11-13T06:38:51.000Z">
-<meta property="article:modified_time" content="2023-11-13T07:27:29.051Z">
+<meta property="article:modified_time" content="2023-11-17T05:40:55.737Z">
 <meta property="article:author" content="Ice Bear">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="file:///C:/Users/XYZ/Desktop/%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          972 字
+          1.1k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          9 分钟
+          10 分钟
         
       </span>
     
@@ -285,6 +285,7 @@
 <p>强连通（strongly connected）图：有向图中每一个顶点到每个其他顶点都存在一条路径。</p>
 <p>基础图（underlying graph）：有向图去掉方向后得到的无向图</p>
 <p>弱联通（weakly connected）图：基础图是连通的</p>
+<p>度（degree）：与某个顶点相连的边数。在有向图中还可分为入度和出度。</p>
 <h4 id="9-1-1-图的表示">9.1.1 图的表示</h4>
 <p>最简单的方式构造一张图就是使用二维数组</p>
 <table>
@@ -326,6 +327,10 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Definition of an Edge in the graph</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><br>    <span class="hljs-type">int</span> to; <span class="hljs-comment">// Destination node of the edge</span><br>    <span class="hljs-type">int</span> weight; <span class="hljs-comment">// Weight of the edge</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> *<span class="hljs-title">next</span>;</span> <span class="hljs-comment">// Pointer to the next edge in the list</span><br>&#125; Edge;<br><br><span class="hljs-comment">// Definition of a Vertex in the graph</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">vertex</span>&#123;</span><br>    <span class="hljs-type">int</span> number; <span class="hljs-comment">// Number of the current node</span><br>    Edge *next; <span class="hljs-comment">// Pointer to the list of edges connected to this node</span><br>&#125;Vertex;<br></code></pre></td></tr></table></figure>
 <p>若用邻接表表示无向图则空间使用是<strong>double</strong>的（a到b和b到a各存一条边）。</p>
 <h2 id="9-2-拓扑排序">9.2 拓扑排序</h2>
+<p>拓扑排序是对有向无圈图的顶点的一种排序，它使得如果存在一条从 $v_i$ 到 $v_j$ 的路径，那么在排序中$ v_j $出现在 $v_i$ 后面。</p>
+<p></p>
+<h2 id="9-3-最短路径算法">9.3 最短路径算法</h2>
+<h3 id="9-3-1">9.3.1</h3>
 
                 
               </div>
@@ -423,9 +428,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/15/IS-LM%E6%A8%A1%E5%9E%8B/" title="IS-LM模型">
+                      <a href="/2023/11/15/%E5%AE%8F%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6-IS-LM%E6%A8%A1%E5%9E%8B/" title="宏观经济学-IS-LM模型">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">IS-LM模型</span>
+                        <span class="hidden-mobile">宏观经济学-IS-LM模型</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
