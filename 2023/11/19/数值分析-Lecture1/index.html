@@ -16,18 +16,27 @@
   <meta name="author" content="Ice Bear">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数值分析——Lecture1Chapter1 Mathematical Preliminaries 所有的计算最后都会回归到四则运算。  计算机硬件角度看，实际上我们只有二进制的加减乘除。如何利用最简单的加减乘除来计算函数等输入，就是数值分析要解决的问题。  Transformation（变换）：将难以计算的式子转变成容易计算的，比如两个大数A*B，首先取对数log(AB)，则现在只要计算log(">
+    <meta name="description" content="数值分析——Lecture1Chapter1 Mathematical Preliminaries所有的计算最后都会回归到四则运算。  计算机硬件角度看，实际上我们只有二进制的加减乘除。如何利用最简单的加减乘除来计算函数等输入，就是数值分析要解决的问题。  Transformation（变换）：将难以计算的式子转变成容易计算的，比如两个大数A*B，首先取对数log(AB)，则现在只要计算log(A">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数值分析-Lecture1">
 <meta property="og:url" content="http://example.com/2023/11/19/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90-Lecture1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="数值分析——Lecture1Chapter1 Mathematical Preliminaries 所有的计算最后都会回归到四则运算。  计算机硬件角度看，实际上我们只有二进制的加减乘除。如何利用最简单的加减乘除来计算函数等输入，就是数值分析要解决的问题。  Transformation（变换）：将难以计算的式子转变成容易计算的，比如两个大数A*B，首先取对数log(AB)，则现在只要计算log(">
+<meta property="og:description" content="数值分析——Lecture1Chapter1 Mathematical Preliminaries所有的计算最后都会回归到四则运算。  计算机硬件角度看，实际上我们只有二进制的加减乘除。如何利用最简单的加减乘除来计算函数等输入，就是数值分析要解决的问题。  Transformation（变换）：将难以计算的式子转变成容易计算的，比如两个大数A*B，首先取对数log(AB)，则现在只要计算log(A">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="c:\Users\XYZ\Desktop\%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90p1.png">
 <meta property="og:image" content="c:\Users\XYZ\Desktop\p2.png">
 <meta property="og:image" content="c:\Users\XYZ\Desktop\p3.png">
+<meta property="og:image" content="c:\Users\XYZ\Desktop\NA3.png">
+<meta property="og:image" content="c:\Users\XYZ\Desktop\na4.png">
+<meta property="og:image" content="c:\Users\XYZ\Desktop\NA5.png">
+<meta property="og:image" content="c:\Users\XYZ\Desktop\NA6.png">
+<meta property="og:image" content="c:\Users\XYZ\Desktop\NA7.png">
+<meta property="og:image" content="c:\Users\XYZ\Desktop\NA8.png">
+<meta property="og:image" content="c:\Users\XYZ\Desktop\NA10.png">
+<meta property="og:image" content="c:\Users\XYZ\Desktop\NA11.png">
+<meta property="og:image" content="c:\Users\XYZ\Desktop\NA12.png">
 <meta property="article:published_time" content="2023-11-19T09:42:04.000Z">
-<meta property="article:modified_time" content="2023-11-19T11:12:14.543Z">
+<meta property="article:modified_time" content="2023-11-20T06:20:46.450Z">
 <meta property="article:author" content="Ice Bear">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="c:\Users\XYZ\Desktop\%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90p1.png">
@@ -227,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          495 字
+          1.3k 字
         
       </span>
     
@@ -238,7 +247,7 @@
         
         
         
-          5 分钟
+          11 分钟
         
       </span>
     
@@ -280,8 +289,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="数值分析——Lecture1"><a href="#数值分析——Lecture1" class="headerlink" title="数值分析——Lecture1"></a>数值分析——Lecture1</h1><p>Chapter1 Mathematical Preliminaries</p>
-<pre><code class="hljs">所有的计算最后都会回归到四则运算。
+                <h1 id="数值分析——Lecture1"><a href="#数值分析——Lecture1" class="headerlink" title="数值分析——Lecture1"></a>数值分析——Lecture1</h1><h2 id="Chapter1-Mathematical-Preliminaries"><a href="#Chapter1-Mathematical-Preliminaries" class="headerlink" title="Chapter1 Mathematical Preliminaries"></a>Chapter1 Mathematical Preliminaries</h2><pre><code class="hljs">所有的计算最后都会回归到四则运算。
 
 计算机硬件角度看，实际上我们只有二进制的加减乘除。如何利用最简单的加减乘除来计算函数等输入，就是数值分析要解决的问题。
 </code></pre><p><img src="C:\Users\XYZ\Desktop\数值分析p1.png" srcset="/img/loading.gif" lazyload alt=""></p>
@@ -293,6 +301,28 @@
 </code></pre><p><strong>Roundoff Error舍入误差：</strong> 是指运算得到的近似值和精确值之间的差异。在本题目中比如$\dfrac{1}{42}$，计算时我们只保留了三位小数，这里产生的误差就是舍入误差</p>
 <p><strong>Truncation Error截断误差：</strong> 如本题中，我们只保留了S4部分而舍弃了R4部分，R4就是截断误差。</p>
 <p><img src="C:\Users\XYZ\Desktop\p3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="C:\Users\XYZ\Desktop\NA3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如上图所示，误差分为<strong>绝对误差 （absolute error）</strong> 和 <strong>相对误差（relative error）</strong></p>
+<p><img src="C:\Users\XYZ\Desktop\na4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>PS：教材上用<strong>significant digits</strong>来表示有效数字</p>
+<pre><code class="hljs">此时只剩下一位有效数字，此时的相对误差可能是比较大的，比如原来a1 = 0.123450，a2 = 0.123462，则a2 - a1 = 0.000012，而我们用chopping的方法得到的差值是0.00001，这里就有20%的相对误差。
+
+由此可见，在输入信息给计算机时，尽可能把它化简
+</code></pre><p><img src="C:\Users\XYZ\Desktop\NA5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<pre><code class="hljs">如上例题，在$x = 4.71$时对$f(x)$值作一个三位有效数字的近似。注意，这里每一次计算都会chopping，比如计算$x^2$，会将$0.0841$舍去。在Rounding时也是类似，比如计算$x^3$时，中间会先计算得到$x^2$，再将$x^2$乘以x得到$x^3$，而$x^2$在rounding计算过程中得到结果是22.2，我们会用$22.2*4.71$后再rounding得到105.
+
+而如果采取上图所示的另一种解法，先提取因式后再计算，其实质是减少的乘法的次数来减少计算过程中chopping和rounding的精度损失
+</code></pre><p><img src="C:\Users\XYZ\Desktop\NA6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="算法稳定性的定义："><a href="#算法稳定性的定义：" class="headerlink" title="算法稳定性的定义："></a>算法稳定性的定义：</h3><pre><code class="hljs">如果输入的数据的微小变化导致相应结果的微小变化而非产生巨大误差，那么称算法是稳定的，否则是不稳定的。
+
+对算法的stable和unstable进行量化，如果n次微小的输入扰动后产生的误差约等于$C*n*E_0$，此时称其为线性增长，这是可接受的误差。而如果n次输入扰动后产生误差约等于$C^n*E_0$，此时称其为指数级增长，这会导致不可接受的误差。
+</code></pre><p><img src="C:\Users\XYZ\Desktop\NA7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="C:\Users\XYZ\Desktop\NA8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>观察两个递推式，$I<em>n = 1 - nI</em>{n-1}$，由于右侧系数为$n &gt; 1$，显然是不收敛的。而第二个递推式$ I_{n-1} = \dfrac{1}{n}(1 - I_n)$，显然右边的递推系数 &lt; 1是收敛的</p>
+<p><img src="C:\Users\XYZ\Desktop\NA10.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="C:\Users\XYZ\Desktop\NA11.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><strong>机器浮点数表示中有下界，即精度最高只能到某一定值。</strong></p>
+<p><img src="C:\Users\XYZ\Desktop\NA12.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
                 
               </div>

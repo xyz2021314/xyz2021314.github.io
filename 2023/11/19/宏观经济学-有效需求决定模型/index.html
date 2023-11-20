@@ -26,7 +26,7 @@
 <meta property="og:image" content="c:\Users\XYZ\Desktop\hg3.png">
 <meta property="og:image" content="c:\Users\XYZ\Desktop\hg4.png">
 <meta property="article:published_time" content="2023-11-19T11:27:36.000Z">
-<meta property="article:modified_time" content="2023-11-19T13:58:45.181Z">
+<meta property="article:modified_time" content="2023-11-20T09:11:52.045Z">
 <meta property="article:author" content="Ice Bear">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="c:\Users\XYZ\Desktop\hg3.png">
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          921 字
+          2.8k 字
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          8 分钟
+          24 分钟
         
       </span>
     
@@ -310,6 +310,69 @@
     总需求 = 总供给I = S
 \end{cases}</script><p>如果居民在消费中并<strong>没有把所有的收入都用于消费</strong>，那么该循环更新为下图</p>
 <p><img src="C:\Users\XYZ\Desktop\hg4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<pre><code class="hljs">如果居民将10%的收入用于储蓄，则下一轮生产周期，只有900亿被用来消费，即企业营收为900亿，如此类推，整个宏观经济是趋于收缩的。而当居民把储蓄存到银行，银行把收取的存款借款给企业，则能保持企业生产总规模至少维持1000亿不变。要维持原有的规模，则至少要保证银行吸收的储蓄和投资规模相等。
+
+总结两部门经济的有效需求决定模型如下：
+
+    总供给 Y = C+S
+
+    总需求 Y = C+I
+
+由此得到I = S，即投资等于储蓄，此时经济可以维持现有规模。如果I &lt; S，即总需求小于总供给，则经济增长收缩；如果I &gt; S，即总需求大于总供给，则经济增长扩张。
+
+理论上，只要不断扩大投资规模就可以不断扩大经济总规模，但实际上经济生产是建立在可利用的资源之上的，如果资源支撑不了经济的发展，即经济增长超过其可利用资源的制约的话，经济过热、泡沫、通货膨胀等问题就会出现。
+</code></pre><p>三部门经济的有效需求决定模型：</p>
+<p>（pic）</p>
+<p>此时</p>
+<p>总供给 Y = C + S + T</p>
+<p>总需求 Y = C + I + G(政府购买)</p>
+<p>得到 I + G = S + T, I = S + T - G</p>
+<p>T表示政府财政收入，G表示政府财政支出，则把$T-G$看作整体。</p>
+<pre><code class="hljs">若I &lt; S + (T-G)，总需求小于总供给，经济规模缩小。要维持经济规模保持不变，在投资和储蓄都确定的情况下，可以通过政府的财政活动，即扩大政府购买（财政赤字）。
+
+若I &gt; S + (T-G)，总需求大于总供给，经济规模扩大。此时政府采取的措施与上述情况相反。
+
+由此可见，三部门经济相对于两部门经济，多了一个政府的调控过程。即尽量使经济活动中损失的经济回归到社会经济体中。
+</code></pre><p>四部门经济的有效需求决定模型：</p>
+<pre><code class="hljs">总供给 Y = C+S+T+M
+
+总需求 Y = C+I+G+X
+</code></pre><p>I = S + (T-G) + (M-X)，M-X称为净出口</p>
+<p>同上所述，如果I &lt; S，可以从T-G和M-X两个角度来调节经济规模</p>
+<h3 id="有效需求变动及其规律"><a href="#有效需求变动及其规律" class="headerlink" title="有效需求变动及其规律"></a>有效需求变动及其规律</h3><p>   $ Y = C+I$</p>
+<pre><code class="hljs">$C = a+bY$
+</code></pre><p>则$Y = (a+I) / (1-b)$</p>
+<p>例1：已知消费函数C = 1000 + 0.8Y，投资I = 600亿，求总产出水平Y. Y = 8000亿</p>
+<p>例2：假设上题中自发性消费从1000到900，I不变，求此时总产出水平Y. Y = 7500亿 </p>
+<p>由此可见，<strong>消费减少了100亿，但是总产出水平减少了500亿！</strong></p>
+<p>例3：假设消费函数仍为C = 1000 + 0.8Y，投资规模由600亿扩大至650亿，求总产出水平Y.    Y = 8250亿，$\Delta Y$ = 250亿. 即<strong>投资增加了50亿，总产出规模增加了250亿！</strong></p>
+<p>这里就引出<mark>消费乘数</mark>和<mark>投资乘数</mark></p>
+<details><summary>宏观经济学中的“破窗理论”</summary>    宏观经济学中的”破窗理论”：一个男孩打破了窗玻璃，他妈妈拿钱去买了新玻璃，玻璃店老板雇佣新工人，工人拿钱去买汉堡......如此循环下去，原先一个窗玻璃的消费引发了后续一系列经济活动，并且其总和是远大于一个窗玻璃的价值。</details>
+
+<pre><code class="hljs">这里就引发一个**节约悖论**，宏观经济的角度，消费带动经济发展，反而是节约阻碍了消费。而实际上现实生活中，低收入人群需要钱来消费但是没有钱，高收入人群的钱相对他的需求过多的，所以这里就产生了一部分需求不被满足，以及一部分钱闲置的浪费。所以政府的**转移支付**就尤为重要。
+
+凯恩斯理论中有效需求的不足及其原因是**边际消费倾向递减规律；投资的边际效率递减规律；灵活偏好和流动性陷阱**。
+</code></pre><h4 id="消费乘数、投资乘数与政府购买乘数"><a href="#消费乘数、投资乘数与政府购买乘数" class="headerlink" title="消费乘数、投资乘数与政府购买乘数"></a>消费乘数、投资乘数与政府购买乘数</h4><p>政府对有效需求的调节：</p>
+<pre><code class="hljs">$Y = C+I+G$
+</code></pre><p>考虑财政转移支付g和政府税收T，则有国民可支配收入：</p>
+<p>   $ Yd = Y+g-T$</p>
+<p>消费函数为：</p>
+<pre><code class="hljs">$C = a+b(Y+g-T)$
+</code></pre><p>整理后得到：</p>
+<pre><code class="hljs">$Y = \dfrac&#123;a+I+G+bg-bT&#125;&#123;1-b&#125;$
+</code></pre><p>$\Delta Y = \Delta a*\dfrac{1}{1-b}$，这里的$\dfrac{1}{1-b}$称为<mark>消费乘数</mark></p>
+<p>同理，$I$和$G$的变动对$Y$也有相同的影响效果，则$\dfrac{1}{1-b}$也可以用来表示<mark>投资乘数</mark>和<mark>政府购买乘数</mark></p>
+<p>现在考虑转移支付和税收：</p>
+<p>$\Delta Y = \Delta g*\dfrac{b}{1-b}$，即<mark>转移支付乘数</mark></p>
+<p>$\Delta Y = \Delta T*\dfrac{-b}{1-b}$，即<mark>政府税收乘数</mark></p>
+<p>两种税收形式下的：</p>
+<pre><code class="hljs">$Yd = Y + g - T - rY$，其中T称为固定税，rY称为比例税
+</code></pre><p>相应的消费函数为：</p>
+<p>   $ C = a+b(Y+g-T-rY)$</p>
+<p>整理可得$Y = \dfrac{a+I+G+bg-bT}{1-b+br}$，则各项乘数改写为</p>
+<p><strong>KC(消费乘数)=KI(投资乘数)=KG(政府购买乘数)</strong> = $\dfrac{1-r}{1-b}$</p>
+<p><strong>Kg(转移支付乘数)</strong> = $\dfrac{(1-r)b}{1-b}$</p>
+<p><strong>kT(政府税收乘数)</strong> = $\dfrac{-(1-r)b}{1-b}$</p>
 
                 
               </div>
@@ -406,6 +469,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/11/20/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90-Lecture2/" title="数值分析-Lecture2">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数值分析-Lecture2</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
