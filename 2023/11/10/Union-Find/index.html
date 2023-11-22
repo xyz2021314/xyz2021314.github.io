@@ -17,12 +17,12 @@
   <meta name="author" content="Ice Bear">
   <meta name="keywords" content="">
   
-    <meta name="description" content="7-1 File Transfer Score: 13 Author: 陈越 Affiliation: 浙江大学 Description We have a network of computers and a list of bi-directional connections. Each of these connections allows a file transfer from one">
+    <meta name="description" content="7-1 File Transfer Score: 13 Author: 陈越 Affiliation: 浙江大学  Description We have a network of computers and a list of bi-directional connections. Each of these connections allows a file transfer from on">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Union&#x2F;Find">
 <meta property="og:url" content="http://example.com/2023/11/10/Union-Find/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="7-1 File Transfer Score: 13 Author: 陈越 Affiliation: 浙江大学 Description We have a network of computers and a list of bi-directional connections. Each of these connections allows a file transfer from one">
+<meta property="og:description" content="7-1 File Transfer Score: 13 Author: 陈越 Affiliation: 浙江大学  Description We have a network of computers and a list of bi-directional connections. Each of these connections allows a file transfer from on">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-10T07:38:40.000Z">
 <meta property="article:modified_time" content="2023-11-12T07:47:31.609Z">
@@ -84,11 +84,7 @@
 
 
   
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -279,60 +275,60 @@
             
               <div class="markdown-body">
                 
-                <h3 id="7-1-File-Transfer">7-1 File Transfer</h3>
-<p><strong>Score</strong>: 13<br>
-<strong>Author</strong>: 陈越<br>
+                <h3 id="7-1-file-transfer"><a class="markdownIt-Anchor" href="#7-1-file-transfer"></a> 7-1 File Transfer</h3>
+<p><strong>Score</strong>: 13<br />
+<strong>Author</strong>: 陈越<br />
 <strong>Affiliation</strong>: 浙江大学</p>
-<h4 id="Description">Description</h4>
+<h4 id="description"><a class="markdownIt-Anchor" href="#description"></a> Description</h4>
 <p>We have a network of computers and a list of bi-directional connections. Each of these connections allows a file transfer from one computer to another. The question is: Is it possible to send a file from any computer on the network to any other?</p>
-<h4 id="Input-Specification">Input Specification</h4>
+<h4 id="input-specification"><a class="markdownIt-Anchor" href="#input-specification"></a> Input Specification</h4>
 <p>Each input file contains one test case. For each test case, the first line contains <code>N</code> (2 ≤ N ≤ 10^4), the total number of computers in a network. Each computer in the network is then represented by a positive integer between 1 and N. Then in the following lines, the input is given in the format:</p>
 <ul>
 <li>
-<p><code>I c1 c2</code><br>
+<p><code>I c1 c2</code><br />
 where <code>I</code> stands for inputting a connection between <code>c1</code> and <code>c2</code>; or</p>
 </li>
 <li>
-<p><code>C c1 c2</code><br>
+<p><code>C c1 c2</code><br />
 where <code>C</code> stands for checking if it is possible to transfer files between <code>c1</code> and <code>c2</code>; or</p>
 </li>
 <li>
-<p><code>S</code><br>
+<p><code>S</code><br />
 where <code>S</code> stands for stopping this case.</p>
 </li>
 </ul>
-<h4 id="Output-Specification">Output Specification</h4>
+<h4 id="output-specification"><a class="markdownIt-Anchor" href="#output-specification"></a> Output Specification</h4>
 <p>For each <code>C</code> case, print in one line the word <code>&quot;yes&quot;</code> or <code>&quot;no&quot;</code> if it is possible or impossible to transfer files between <code>c1</code> and <code>c2</code>, respectively. At the end of each case, print in one line <code>&quot;The network is connected.&quot;</code> if there is a path between any pair of computers; or <code>&quot;There are k components.&quot;</code> where <code>k</code> is the number of connected components in this network.</p>
-<h4 id="Sample-Input-1">Sample Input 1</h4>
-<p>5<br>
-C 3 2<br>
-I 3 2<br>
-C 1 5<br>
-I 4 5<br>
-I 2 4<br>
-C 3 5<br>
+<h4 id="sample-input-1"><a class="markdownIt-Anchor" href="#sample-input-1"></a> Sample Input 1</h4>
+<p>5<br />
+C 3 2<br />
+I 3 2<br />
+C 1 5<br />
+I 4 5<br />
+I 2 4<br />
+C 3 5<br />
 S</p>
-<h4 id="Sample-Output-1">Sample Output 1</h4>
-<p>no<br>
-no<br>
-yes<br>
+<h4 id="sample-output-1"><a class="markdownIt-Anchor" href="#sample-output-1"></a> Sample Output 1</h4>
+<p>no<br />
+no<br />
+yes<br />
 There are 2 components.</p>
-<h4 id="Sample-Input-2">Sample Input 2</h4>
-<p>5<br>
-C 3 2<br>
-I 3 2<br>
-C 1 5<br>
-I 4 5<br>
-I 2 4<br>
-C 3 5<br>
-I 1 3<br>
-C 1 5<br>
+<h4 id="sample-input-2"><a class="markdownIt-Anchor" href="#sample-input-2"></a> Sample Input 2</h4>
+<p>5<br />
+C 3 2<br />
+I 3 2<br />
+C 1 5<br />
+I 4 5<br />
+I 2 4<br />
+C 3 5<br />
+I 1 3<br />
+C 1 5<br />
 S</p>
-<h4 id="Sample-Output-2">Sample Output 2</h4>
-<p>no<br>
-no<br>
-yes<br>
-yes<br>
+<h4 id="sample-output-2"><a class="markdownIt-Anchor" href="#sample-output-2"></a> Sample Output 2</h4>
+<p>no<br />
+no<br />
+yes<br />
+yes<br />
 The network is connected.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MaxNodes 10005</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> DisjSet; <span class="hljs-comment">// disjoint set的缩写</span><br><br>DisjSet S[MaxNodes]; <span class="hljs-comment">// 记录结点的root</span><br><br><span class="hljs-type">int</span> n; <span class="hljs-comment">// 结点总数</span><br><span class="hljs-type">char</span> Type;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">findRoot</span><span class="hljs-params">(<span class="hljs-type">int</span> vertice)</span>&#123; <span class="hljs-comment">// 寻找vertice的根节点、压缩路径并返回该根节点</span><br>    <span class="hljs-type">int</span> present = vertice;<br>    <span class="hljs-type">int</span> temp ,root;<br>    <span class="hljs-keyword">while</span>(S[present] &gt; <span class="hljs-number">0</span> &amp;&amp; S[present] != present)&#123;<br>        present = S[present];<br>    &#125;<br>    root = present;<br><br>    <span class="hljs-comment">// path compression</span><br>    <span class="hljs-keyword">while</span>(S[vertice] &gt; <span class="hljs-number">0</span> &amp;&amp; S[vertice] != vertice)&#123; <br>        temp = S[vertice];<br>        S[vertice] = root;<br>        vertice = temp;<br>    &#125;<br>    <span class="hljs-keyword">return</span> root;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">Union</span><span class="hljs-params">(<span class="hljs-type">int</span> vertice1, <span class="hljs-type">int</span> vertice2)</span>&#123;<br>    <span class="hljs-type">int</span> root1 = findRoot(vertice1);<br>    <span class="hljs-type">int</span> root2 = findRoot(vertice2);<br>    <span class="hljs-keyword">if</span>(root1 != root2)&#123; <span class="hljs-comment">// union by size</span><br>        <span class="hljs-keyword">if</span>(S[root1] &lt;= S[root2])&#123;<br>            S[root1] += S[root2];<br>            S[root2] = root1;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            S[root2] += S[root1];<br>            S[root1] = root2;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i &lt;= n;i++) S[i] = <span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">while</span>((Type = getchar()) != <span class="hljs-string">&#x27;S&#x27;</span>)&#123;<br>        <span class="hljs-keyword">if</span>(Type == <span class="hljs-string">&#x27;I&#x27;</span>)&#123;<br>            <span class="hljs-type">int</span> index1, index2;<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;index1, &amp;index2);<br>            Union(index1, index2);<br>        &#125;<br><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(Type == <span class="hljs-string">&#x27;C&#x27;</span>)&#123;<br>            <span class="hljs-type">int</span> index1, index2;<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;index1, &amp;index2);<br>            <span class="hljs-keyword">if</span>(findRoot(index1) == findRoot(index2)) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;yes\n&quot;</span>);<br>            <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;no\n&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i &lt;= n;i++)&#123;<br>        count += (S[i] &lt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span>:<span class="hljs-number">0</span>);<br>    &#125; <br><br>    <span class="hljs-keyword">if</span>(count == <span class="hljs-number">1</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The network is connected.&quot;</span>);<br>    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;There are %d components.\n&quot;</span>,count);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 

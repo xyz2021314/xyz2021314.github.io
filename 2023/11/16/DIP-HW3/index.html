@@ -17,12 +17,12 @@
   <meta name="author" content="Ice Bear">
   <meta name="keywords" content="">
   
-    <meta name="description" content="图像信息处理HW3 实验报告 曹正 3220102918 一、实验目的和要求 1.lmage logarithmic operation for visibility enhancement 通过图像对数变换增强图像对比度     2.Histogram equalization 通过直方图均衡化增强图像对比度 二、实验内容和原理 1. 图像对数变换 (Logarithmic Transforma">
+    <meta name="description" content="图像信息处理HW3 实验报告 曹正 3220102918  一、实验目的和要求 1.lmage logarithmic operation for visibility enhancement 通过图像对数变换增强图像对比度     2.Histogram equalization 通过直方图均衡化增强图像对比度  二、实验内容和原理  1. 图像对数变换 (Logarithmic Transf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DIP-HW3">
 <meta property="og:url" content="http://example.com/2023/11/16/DIP-HW3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="图像信息处理HW3 实验报告 曹正 3220102918 一、实验目的和要求 1.lmage logarithmic operation for visibility enhancement 通过图像对数变换增强图像对比度     2.Histogram equalization 通过直方图均衡化增强图像对比度 二、实验内容和原理 1. 图像对数变换 (Logarithmic Transforma">
+<meta property="og:description" content="图像信息处理HW3 实验报告 曹正 3220102918  一、实验目的和要求 1.lmage logarithmic operation for visibility enhancement 通过图像对数变换增强图像对比度     2.Histogram equalization 通过直方图均衡化增强图像对比度  二、实验内容和原理  1. 图像对数变换 (Logarithmic Transf">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="c:%5CUsers%5CXYZ%5CDocuments%5CWeChat%20Files%5Cwxid_bsolpufiwdz622%5CFileStorage%5CTemp%5C4ee6404381e7968ce0c9f2549453f7d.png">
 <meta property="og:image" content="c:%5CUsers%5CXYZ%5CDocuments%5CWeChat%20Files%5Cwxid_bsolpufiwdz622%5CFileStorage%5CTemp%5C459376f90f567a57b1f81074920b98d.png">
@@ -87,11 +87,7 @@
 
 
   
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
 <body>
@@ -282,25 +278,25 @@
             
               <div class="markdown-body">
                 
-                <h1>图像信息处理HW3 实验报告</h1>
+                <h1 id="图像信息处理hw3-实验报告"><a class="markdownIt-Anchor" href="#图像信息处理hw3-实验报告"></a> 图像信息处理HW3 实验报告</h1>
 <p>曹正 3220102918</p>
-<h2 id="一、实验目的和要求">一、实验目的和要求</h2>
-<p><strong>1.lmage logarithmic operation for visibility enhancement</strong> 通过图像对数变换增强图像对比度<br>
+<h2 id="一-实验目的和要求"><a class="markdownIt-Anchor" href="#一-实验目的和要求"></a> 一、实验目的和要求</h2>
+<p><strong>1.lmage logarithmic operation for visibility enhancement</strong> 通过图像对数变换增强图像对比度<br />
     <strong>2.Histogram equalization</strong> 通过直方图均衡化增强图像对比度</p>
-<h2 id="二、实验内容和原理">二、实验内容和原理</h2>
-<h3 id="1-图像对数变换-Logarithmic-Transformation">1. 图像对数变换 (Logarithmic Transformation)</h3>
+<h2 id="二-实验内容和原理"><a class="markdownIt-Anchor" href="#二-实验内容和原理"></a> 二、实验内容和原理</h2>
+<h3 id="1-图像对数变换-logarithmic-transformation"><a class="markdownIt-Anchor" href="#1-图像对数变换-logarithmic-transformation"></a> 1. 图像对数变换 (Logarithmic Transformation)</h3>
 <ul>
 <li><strong>目的</strong>: 图像对数变换主要用于处理动态范围较大的图像，比如在明亮区域和暗区域都有细节的图像。它通过压缩图像的高亮区域和扩展暗区域来增强图像的对比度。</li>
-<li><strong>原理</strong>: 对数变换依据以下数学公式： $s=c⋅log(1+r)$  其中，r 是原始像素值，s 是变换后的像素值，而 c 是一个常数。对数函数的形状决定了暗区域的像素值会被拉伸（增加对比度），而亮区域的像素值被压缩。</li>
+<li><strong>原理</strong>: 对数变换依据以下数学公式： <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>=</mo><mi>c</mi><mo>⋅</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">s=c⋅log(1+r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span>  其中，r 是原始像素值，s 是变换后的像素值，而 c 是一个常数。对数函数的形状决定了暗区域的像素值会被拉伸（增加对比度），而亮区域的像素值被压缩。</li>
 <li><strong>应用</strong>: 这种变换尤其适用于增强医学成像或天文图像中的细节，因为这些领域的图像通常包含广泛的亮度级别。</li>
 </ul>
-<h3 id="2-直方图均衡化-Histogram-Equalization">2. 直方图均衡化 (Histogram Equalization)</h3>
+<h3 id="2-直方图均衡化-histogram-equalization"><a class="markdownIt-Anchor" href="#2-直方图均衡化-histogram-equalization"></a> 2. 直方图均衡化 (Histogram Equalization)</h3>
 <ul>
 <li><strong>目的</strong>: 直方图均衡化是用来改善图像的全局对比度的技术。它对图像的直方图进行调整，使得像素的分布更加均匀，从而增强整体对比度。</li>
 <li><strong>原理</strong>: 这个过程通过重新分配像素值来实现，使得直方图（即像素强度的分布）变得更加平坦和广泛。算法计算累积分布函数（CDF），并用它来映射旧的像素值到新的像素值，从而均衡直方图。</li>
 <li><strong>应用</strong>: 直方图均衡化广泛用于各种图像处理领域，尤其是在低对比度图像中效果显著。例如，在消除雾霾影响、改善摄影图像或者医学图像分析中都非常有用。</li>
 </ul>
-<h2 id="三、实验步骤与分析">三、实验步骤与分析</h2>
+<h2 id="三-实验步骤与分析"><a class="markdownIt-Anchor" href="#三-实验步骤与分析"></a> 三、实验步骤与分析</h2>
 <ol>
 <li>
 <p><strong>读取 BMP 图像</strong>: 使用 <code>LoadBitmapFile</code> 函数读取 BMP 格式的图像，并存储图像头部信息和数据。</p>
@@ -320,12 +316,12 @@
 <p><strong>输出处理后的图像</strong>: 将经过对数变换和直方图均衡化的图像数据写入新的 BMP 文件中。</p>
 </li>
 </ol>
-<h2 id="四、实验环境及运行方法">四、实验环境及运行方法</h2>
+<h2 id="四-实验环境及运行方法"><a class="markdownIt-Anchor" href="#四-实验环境及运行方法"></a> 四、实验环境及运行方法</h2>
 <p><strong>实验环境：</strong> VSCode</p>
 <p><strong>测试方法：</strong> 输入原始bmp文件，运行程序，检查文件夹中生成相应的图像</p>
-<h2 id="五、实验结果展示">五、实验结果展示</h2>
-<p><img src="C:%5CUsers%5CXYZ%5CDocuments%5CWeChat%20Files%5Cwxid_bsolpufiwdz622%5CFileStorage%5CTemp%5C4ee6404381e7968ce0c9f2549453f7d.png" srcset="/img/loading.gif" lazyload alt="4ee6404381e7968ce0c9f2549453f7d.png"></p>
-<p><img src="C:%5CUsers%5CXYZ%5CDocuments%5CWeChat%20Files%5Cwxid_bsolpufiwdz622%5CFileStorage%5CTemp%5C459376f90f567a57b1f81074920b98d.png" srcset="/img/loading.gif" lazyload alt="459376f90f567a57b1f81074920b98d.png"></p>
+<h2 id="五-实验结果展示"><a class="markdownIt-Anchor" href="#五-实验结果展示"></a> 五、实验结果展示</h2>
+<p><img src="C:%5CUsers%5CXYZ%5CDocuments%5CWeChat%20Files%5Cwxid_bsolpufiwdz622%5CFileStorage%5CTemp%5C4ee6404381e7968ce0c9f2549453f7d.png" srcset="/img/loading.gif" lazyload alt="4ee6404381e7968ce0c9f2549453f7d.png" /></p>
+<p><img src="C:%5CUsers%5CXYZ%5CDocuments%5CWeChat%20Files%5Cwxid_bsolpufiwdz622%5CFileStorage%5CTemp%5C459376f90f567a57b1f81074920b98d.png" srcset="/img/loading.gif" lazyload alt="459376f90f567a57b1f81074920b98d.png" /></p>
 
                 
               </div>
